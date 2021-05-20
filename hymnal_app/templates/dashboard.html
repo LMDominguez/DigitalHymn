@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href = "{% static '/css/main.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-end"><a href="/logout">Logout</a></div>
+        <div class="row">
+            <div class="col">
+                <h1>Welcome {{logged_user.first_name}}</h1>
+                <h3 class = "test">Start creating your own lyric sets.</h3>
+                <h5>Share them with your group!</h5>
+            </div>
+            <div class="col-3">
+                <a href="/set/create_form" class = "btn btn-info m-1">Build a new set</a>
+                <a href="/set/view_user_sets" class = "btn btn-info m-1">View My Sets</a>
+                <a href="" class = "btn btn-info m-1">View My Songs</a>
+            </div>
+        </div>
+        <hr>
+        <div class="container grayback">
+            <div class="row m-2">
+                <img id="pic1" src= "{% static '/images/dashboard/pic2.jpg' %}" alt="">
+                <span class="col-1"></span>
+                <div class="col align-self-center">
+                    <h2>Digital Hymnal is a lyric display alternative. Great for home or outdoor gatherings.</h2>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col align-self-center just">
+                    <h2>Create your songs and sets to be displayed on mobile devices</h2>
+                </div>
+                <span class="col-1"></span>
+                <img id="pic1" src= "{% static '/images/dashboard/pic6.jpg' %}" alt="">
+            </div>
+            <div class="row m-2">
+                <img id="pic1" src= "{% static '/images/dashboard/pic3.jpg' %}" alt="">
+                <span class="col-1"></span>
+                <div class="col align-self-center">
+                    <h2>No need to set up a large lyric display system. </h2>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col align-self-center">
+                    <h2>It's cool!!!</h2>
+                </div>
+                <span class="col-1"></span>
+                <img id="pic1" src= "{% static '/images/dashboard/pic4.jpg' %}" alt="">
+            </div>
+            <div class="row">
+                <a href="/set/create_form" class = "btn btn-info m-1 col">Build a new set</a>
+                <a href="/set/view_user_sets" class = "btn btn-info m-1 col">View My Sets</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View {{this_set.title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href = "{% static '/css/main.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-end m-40">
+            <a href="/dashboard">Dashboard </a>-|-
+            <a href="/user/logout">Logout</a> -|-
+            <a href="/set/view_user_sets">Back to Sets</a>
+        </div>
+        <div class="row grayback headbar justify-content-center">
+            <h1>Songs in <strong>{{this_set.title}}</strong> are shown below.</h1>
+        </div>
+        <div class="row just">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{{this_set.title}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for song in songs_in_set %}
+                        <tr>
+                            <td>Song {{song.list_order_queue}}</td>
+                            <td>{{song.title}}</td>
+                            <td>
+                                <form action="/set/song/delete_song/{{song.id}}/{{this_set.id}}" method="POST">
+                                {% csrf_token %}
+                                    <input type="submit" value = "Remove From Set">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Your Saved Songs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for song in saved_user_songs %}
+                        <tr>
+                            <td>{{song.title}}</td>
+                            <td><a href="/song/view/{{song.id}}">View</a></td>
+                            <td>
+                                <form action="/set/song/add_to_set/{{song.id}}/{{this_set.id}}" method="POST">
+                                {% csrf_token %}
+                                    <input type="submit" value = "Add to {{this_set.title}}">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

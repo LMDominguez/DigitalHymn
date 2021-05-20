@@ -1,0 +1,24 @@
+.test {
+    color: rgba(117, 150, 146, 0.418);
+}
+
+#pic1 {
+    width: 500px;
+    border-radius: 5px;
+}
+
+.grayback{
+    background-color: rgba(117, 150, 146, 0.418);
+    padding-top: 8px;
+    border-radius: 10px;
+}
+
+.lyrics-scroll{
+    position: absolute;
+    top: 45%;
+    left: 46%;
+}
+
+.headbar{
+    padding-left: 50px;
+}
